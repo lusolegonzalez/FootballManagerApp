@@ -1,0 +1,36 @@
+﻿@model PlayerViewModel
+@{
+    ViewData["Title"] = SharedLocalizer["Players"];
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @SharedLocalizer["Players"]
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-gear"></i> @SharedLocalizer["Settings"]</a></li>
+        <li><a asp-controller="Players" asp-action="Index">@SharedLocalizer["Players"]</a></li>
+        <li class="active">@SharedLocalizer["Player Deletion"]</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+
+<div class="pad margin">
+    <form asp-controller="Players">
+        <div class="callout callout-danger">
+            <h4>@SharedLocalizer["Are you sure you want to delete?"]</h4>
+            <p>@SharedLocalizer["All data will be lost"]</p>
+            <a type="button" class="btn btn-outline" asp-controller="Players" asp-action="Details" asp-route-id="@Model.Id"><i class="fa fa-times"></i>  @SharedLocalizer["Cancel"]</a>
+            <button type="submit" class="btn btn-outline pull-right" asp-action="DeleteConfirmed" asp-route-id="@Model.Id">
+                @SharedLocalizer["Delete"]  <i class="fa fa-trash-o"></i>
+            </button>
+        </div>
+    </form>
+</div>
+
+<section class="invoice">
+    @await Html.PartialAsync("Shared/_PlayerDetailsView")
+</section>

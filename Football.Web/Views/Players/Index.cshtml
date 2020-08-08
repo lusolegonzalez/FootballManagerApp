@@ -1,0 +1,78 @@
+﻿@model IEnumerable<PlayerViewModel>
+@{
+    ViewData["Title"] = SharedLocalizer["Players"];
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/libs/datatables/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/list-tables.css">
+}
+
+@section Scripts {
+    <script src="~/libs/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/libs/datatables/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/js/pages/settings/players-list.js"></script>
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @SharedLocalizer["Players"]
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-gear"></i> @SharedLocalizer["Settings"]</a></li>
+        <li><a asp-controller="Players" asp-action="Index">@SharedLocalizer["Players"]</a></li>
+        <li class="active">@SharedLocalizer["List of"] @SharedLocalizer["Players"]</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content content-no-bottom-padding">
+
+    <!-- Default box -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">@SharedLocalizer["List of"] @SharedLocalizer["Players"]</h3>
+
+            <div class="box-tools pull-right">
+                <a type="button" class="btn btn-default btn-sm" asp-controller="Players" asp-action="Create">
+                    <i class="fa fa-plus"></i> @SharedLocalizer["Add"]
+                </a>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>@SharedLocalizer["First Name"]</th>
+                            <th>@SharedLocalizer["Last Name"]</th>
+                            <th>@SharedLocalizer["Document"]</th>
+                            <th>@SharedLocalizer["Birth Date"]</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Document)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BirthDate)</td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@item.Id">@SharedLocalizer["View"]</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+</section>
+<!-- /.content -->

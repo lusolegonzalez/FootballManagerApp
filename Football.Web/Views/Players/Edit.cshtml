@@ -1,0 +1,54 @@
+﻿@model PlayerViewModel
+@{
+    ViewData["Title"] = SharedLocalizer["Players"];
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/libs/iCheck/skins/all.css">
+    <link rel="stylesheet" href="~/libs/floating-action-button/css/zoom-floating-button.css">
+}
+
+@section Scripts {
+    <script src="~/libs/iCheck/icheck.min.js"></script>
+    <script src="~/libs/floating-action-button/js/zoom-floating-button.js"></script>
+    <script src="~/js/pages/settings/companies.js"></script>
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @SharedLocalizer["Players"]
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-gear"></i> @SharedLocalizer["Settings"]</a></li>
+        <li><a asp-controller="Players" asp-action="Index">@SharedLocalizer["Players"]</a></li>
+        <li class="active">@SharedLocalizer["Player Edition"]</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form id="company-form" asp-controller="Players">
+        @await Html.PartialAsync("Shared/_PlayerForm")
+
+        <div class="zoom">
+            <a class="zoom-fab zoom-btn-large" id="zoomBtn"><i class="fa fa-bars"></i></a>
+            <ul class="zoom-menu">
+                <li>
+                    <button type="submit" asp-action="Delete" asp-route-id="@Model.Id" class="zoom-fab zoom-btn-sm zoom-btn-delete scale-transition scale-out"
+                            data-toggle="tooltip" title="@SharedLocalizer["Delete"]">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </li>
+                <li>
+                    <button type="submit" asp-action="Edit" asp-route-id="@Model.Id" class="zoom-fab zoom-btn-sm zoom-btn-update scale-transition scale-out"
+                            data-toggle="tooltip" title="@SharedLocalizer["Save"]">
+                        <i class="fa fa-floppy-o"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </form>
+</section>
+

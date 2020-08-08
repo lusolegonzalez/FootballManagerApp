@@ -1,0 +1,47 @@
+﻿@*@model PlayerContactViewModel
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <input asp-for="Name" class="form-control" placeholder="@SharedLocalizer["Name"]" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <input asp-for="Email" class="form-control" placeholder="@SharedLocalizer["Email"]" />
+            </div>            
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                </div>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="@SharedLocalizer["Phone Number"]" />
+            </div>            
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <div class="form-group">
+            <button type="button" class="btn btn-social-icon" 
+                    style="background-color: transparent" data-toggle="tooltip" title="@SharedLocalizer["Delete"]"
+                    onclick="$(this).closest('.row').remove();">
+                <i class="fa fa-times-circle fa-2x text-danger"></i>
+            </button>
+        </div>
+    </div>
+</div>*@
+

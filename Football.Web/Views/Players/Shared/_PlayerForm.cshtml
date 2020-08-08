@@ -1,0 +1,148 @@
+﻿@*@using Football.Web.Extensions
+@model PlayerViewModel
+
+<div class="row">
+
+    <div class="col-md-6">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@SharedLocalizer["General"]</h3>
+            </div>
+
+            <div class="box-body">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" placeholder="@SharedLocalizer["Name"]" autofocus />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Webpage" class="control-label"></label>
+                    <input asp-for="Webpage" class="form-control" placeholder="@SharedLocalizer["Webpage"]" />
+                    <span asp-validation-for="Webpage" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" placeholder="@SharedLocalizer["Email"]" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@SharedLocalizer["Address"]</h3>
+            </div>
+
+            <div class="box-body">
+                <div class="form-group">
+                    <label asp-for="Street" class="control-label"></label>
+                    <input asp-for="Street" class="form-control" placeholder="@SharedLocalizer["Street"]" />
+                    <span asp-validation-for="Street" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Number" class="control-label"></label>
+                    <input asp-for="Number" class="form-control" placeholder="@SharedLocalizer["Number"]" />
+                    <span asp-validation-for="Number" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control" placeholder="@SharedLocalizer["City"]" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="State" class="control-label"></label>
+                    <input asp-for="State" class="form-control" placeholder="@SharedLocalizer["State"]" />
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CountryId" class="control-label"></label>
+                    <select asp-for="CountryId" class="form-control select2" asp-items="@ViewBag.Countries">
+                        <option value="">---</option>
+                    </select>
+                    <span asp-validation-for="CountryId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ZipCode" class="control-label"></label>
+                    <input asp-for="ZipCode" class="form-control" placeholder="@SharedLocalizer["Zip Code"]" />
+                    <span asp-validation-for="ZipCode" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@SharedLocalizer["Types"]</h3>
+            </div>
+
+            <div class="box-body">
+                <ul class="products-list product-list-in-box">
+                    @for (int i = 0; i < Model.Types.Count; i++)
+                    {
+                        <li class="item">
+                            @Html.CheckBoxFor(m => m.Types[i].IsSelected, new { @class = "minimal" })
+                            &nbsp;&nbsp;
+                            @Html.HiddenFor(m => m.Types[i].PlayerType)
+                            @Html.DisplayFor(m => m.Types[i].PlayerType)
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@SharedLocalizer["Invoicing"]</h3>
+            </div>
+
+            <div class="box-body">
+                <div class="form-group">
+                    <label asp-for="VAT" class="control-label"></label>
+                    <input asp-for="VAT" class="form-control" placeholder="@SharedLocalizer["VAT"]" />
+                    <span asp-validation-for="VAT" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="InvoiceRemarks" class="control-label"></label>
+                    <textarea asp-for="InvoiceRemarks" class="form-control" rows="9" placeholder="@SharedLocalizer["Invoice Remarks"]"></textarea>
+                    <span asp-validation-for="InvoiceRemarks" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@SharedLocalizer["Contacts"]</h3>
+            </div>
+
+            <div class="box-body">
+                <div id="contacts-table">
+                    @Html.EditorForMany(x => x.Contacts, x => x.Index)
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-default btn-sm" id="add-contact">
+                        <i class="fa fa-plus"></i> @SharedLocalizer["Add"]
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>*@
