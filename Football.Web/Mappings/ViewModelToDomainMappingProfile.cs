@@ -21,6 +21,38 @@ namespace Football.Web.Mappings
         public ViewModelToDomainMappingProfile()
         {
 
+            CreateMap<MatchViewModel, Match>()
+                .ForMember(vm => vm.Id,
+                    map => map.MapFrom(x => x.Id))
+                .ForMember(vm => vm.Local,
+                    map => map.MapFrom(x => x.Local))
+                .ForMember(vm => vm.Visit,
+                    map => map.MapFrom(x => x.Visit))
+                .ForMember(vm => vm.Field,
+                    map => map.MapFrom(x => x.Field))
+                .ForMember(vm => vm.DateMatch,
+                    map => map.MapFrom(x => x.DateMatch));
+
+            CreateMap<TournamentViewModel, Tournament>()
+                .ForMember(vm => vm.Id,
+                    map => map.MapFrom(x => x.Id))
+                .ForMember(vm => vm.Name,
+                    map => map.MapFrom(x => x.Name))
+                .ForMember(vm => vm.TournamentType,
+                    map => map.MapFrom(x => x.TournamentType))
+                .ForMember(vm => vm.InitDate,
+                    map => map.MapFrom(x => x.InitDate))
+                .ForMember(vm => vm.FinishDate,
+                    map => map.MapFrom(x => x.FinishDate))
+                .ForMember(vm => vm.PointsForWin,
+                    map => map.MapFrom(x => x.PointsForWin))
+                .ForMember(vm => vm.PointsForLost,
+                    map => map.MapFrom(x => x.PointsForLost))
+                .ForMember(vm => vm.PointsForDraw,
+                    map => map.MapFrom(x => x.PointsForDraw));
+
+
+
             //        CreateMap<ApplicationUser, UserViewModel>()
             //            .ForMember(vm => vm.Offices,
             //                map => map.MapFrom(x => x.Offices.Select(y => y.OfficeId)))

@@ -24,6 +24,13 @@ namespace Football.Web.Mappings
 
             CreateMap<IEnumerable<Player>, IEnumerable<PlayerViewModel>>();
 
+            CreateMap<Match, MatchViewModel>();
+            CreateMap<IEnumerable<Match>, IEnumerable<MatchViewModel>>();
+
+            CreateMap<Tournament, TournamentViewModel>();
+            CreateMap<IEnumerable<Tournament>, IEnumerable<TournamentViewModel>>();
+
+
 
 
             //        CreateMap<ApplicationUser, UserViewModel>()

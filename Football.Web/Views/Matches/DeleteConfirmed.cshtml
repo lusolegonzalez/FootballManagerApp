@@ -1,0 +1,36 @@
+﻿@model MatchViewModel
+@{
+    ViewData["Title"] = SharedLocalizer["Matches"];
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @SharedLocalizer["Matches"]
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-gear"></i> @SharedLocalizer["Settings"]</a></li>
+        <li><a asp-controller="Matches" asp-action="Index">@SharedLocalizer["Matches"]</a></li>
+        <li class="active">@SharedLocalizer["Match Deletion"]</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+
+<div class="pad margin">
+    <form asp-controller="Matches">
+        <div class="callout callout-danger">
+            <h4>@SharedLocalizer["Are you sure you want to delete the match?"]</h4>
+            <p>@SharedLocalizer["All data will be lost"]</p>
+            <a type="button" class="btn btn-outline" asp-controller="Matches" asp-action="Details" asp-route-id="@Model.Id"><i class="fa fa-times"></i>  @SharedLocalizer["Cancel"]</a>
+            <button type="submit" class="btn btn-outline pull-right" asp-action="DeleteConfirmed" asp-route-id="@Model.Id">
+                @SharedLocalizer["Delete"]  <i class="fa fa-trash-o"></i>
+            </button>
+        </div>
+    </form>
+</div>
+
+<section class="invoice">
+    @await Html.PartialAsync("Shared/_MatchDetailsView")
+</section>

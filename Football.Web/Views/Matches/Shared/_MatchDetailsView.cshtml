@@ -1,0 +1,79 @@
+﻿@*@model MatchViewModel
+
+     
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="page-header">
+                <i class="fa fa-building"></i> @Html.DisplayFor(model => model.Local) - @Html.DisplayFor(model => model.Visit)
+            </h2>
+        </div>
+         
+    </div>
+     
+    <div class="row invoice-info">
+        <div class="col-sm-4 invoice-col">
+            <address>
+                @Html.DisplayFor(model => model.Street) @Html.DisplayFor(model => model.Number)<br>
+                @Html.DisplayFor(model => model.City)
+                @if (Model.City != null && Model.State != null)
+                {<text>,</text>}
+                @Html.DisplayFor(model => model.State)
+                @if (Model.City != null || Model.State != null)
+                {<text>,</text>}
+                @Html.DisplayFor(model => model.Country)
+                @Html.DisplayFor(model => model.ZipCode)
+                <br>
+
+                @Html.DisplayFor(model => model.Webpage)<br>
+                @Html.DisplayFor(model => model.Email)<br>
+            </address>
+        </div>
+
+        <div class="col-sm-4 invoice-col">
+            <address>
+                <ul>
+                    @foreach (var item in Model.Types.Where(x => x.IsSelected))
+                    {
+                        <li>@Html.DisplayFor(modelItem => item.PlayerType)</li>
+                    }
+                </ul>
+            </address>
+        </div>
+
+        <div class="col-sm-4 invoice-col">
+            <address>
+                <strong>@SharedLocalizer["Invoicing"]</strong><br />
+                <strong>@SharedLocalizer["VAT"]: </strong> @Html.DisplayFor(model => model.VAT)<br>
+                <strong>@SharedLocalizer["Invoice Remarks"]: </strong> @Html.DisplayFor(model => model.InvoiceRemarks)<br>
+            </address>
+        </div>
+
+        @if (Model.Contacts.Count > 0)
+        {
+
+            <div class="col-sm-12">
+                <h2 class="page-header">
+                    @SharedLocalizer["Contacts"]
+                </h2>
+                <table class="table table-responsive table-striped">
+                    <thead>
+                        <tr>
+                            <th>@SharedLocalizer["Name"]</th>
+                            <th>@SharedLocalizer["Email"]</th>
+                            <th>@SharedLocalizer["Phone Number"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var contact in Model.Contacts)
+                        {
+                            <tr>
+                                <td>@contact.Name</td>
+                                <td>@contact.Email</td>
+                                <td>@contact.PhoneNumber</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>*@

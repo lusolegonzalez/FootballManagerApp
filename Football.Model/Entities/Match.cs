@@ -10,7 +10,7 @@ namespace Football.Model.Entities
         public Team Local { get; set; }
         public Team Visit { get; set; }
         public int Field { get; set; }
-        public DateTime? DateMatch { get; set; }
+        public DateTime DateMatch { get; set; }
 
     }
 }
